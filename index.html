@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Methods: Numerical Simulation" />
+  <meta name="date" content="2016-03-16" />
+  <title>Assignment 2</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="buttondown.css" type="text/css" />
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Assignment 2</h1>
+<h2 class="author">Methods: Numerical Simulation</h2>
+<h3 class="date">March 16, 2016</h3>
+</div>
+<h4 id="stackelberg-game">Stackelberg game</h4>
+<p><em>Adapted from Game Theory 1: Problem set 2</em></p>
+<p>Three oligopolists <span class="math inline">\(i\)</span> = 1,2,3 operate in a market with inverse demand given by <span class="math inline">\(P(Q) = a - Q\)</span>, where <span class="math inline">\(Q = q_1 +q_2 +q_3 &lt; a\)</span>. Firms <span class="math inline">\(i\)</span> = 1,2,3 have constant per-unit costs of, respectively, <span class="math inline">\(c_1\)</span>, <span class="math inline">\(c_2\)</span> and <span class="math inline">\(c_3\)</span>. To determine the subgame-perfect Nash equilibrium, we first consider the sequence of moves, which is as follows:</p>
+<ul>
+<li><p>At time <span class="math inline">\(t = 1\)</span>: Firm 1 chooses quantity <span class="math inline">\(q_1 \geq 0\)</span>.</p></li>
+<li><p>At time <span class="math inline">\(t = 2\)</span>: After observing <span class="math inline">\(q_1\)</span>, firms 2 and 3 simultaneously and independently choose <span class="math inline">\(q_2 \geq 0\)</span> and <span class="math inline">\(q_3 \geq 0\)</span>, respectively.</p></li>
+</ul>
+<p>This is a sequential game with one proper subgame that starts in <span class="math inline">\(t\)</span> = 2. The subgame-perfect Nash equilibrium (SPNE) consists of a single quantity for firm 1 and functions <span class="math inline">\(q_2\)</span> = <span class="math inline">\(q_2(q_1)\)</span> and <span class="math inline">\(q_3\)</span> = <span class="math inline">\(q_3(q_1)\)</span> for firms 2 and 3 prescribing subgame perfect Nash equilibrium choices for firms 2 and 3 for every quantity choice by firm 1. We solve the game by backward induction. Start in <span class="math inline">\(t = 2\)</span>: Maximizing firm 3 profits gives:</p>
+<p><span class="math display">\[q_3(q_1,q_2)= \frac{a - c_3 - q_1 - q_2}{2},\]</span></p>
+<p>where <span class="math inline">\(q_2\)</span> is assumed to be given. For firm 2 analogously:</p>
+<p><span class="math display">\[q_2(q_1,q_3)= \frac{a - c_2 - q_1 - q_3}{2}.\]</span></p>
+<p>Inserting both into each other yields the Nash equilibrium of the subgame between firms 2 and 3:</p>
+<p><span class="math display">\[q_2 = \frac{1}{3}(a - 2c_2 + c_3 - q_1)\ and\ q_3 = \frac{1}{3}(a - 2c_3 + c_2 - q_1)\tag{1}\]</span></p>
+<p>Moving to <span class="math inline">\(t\)</span> = 1: Inserting the expressions in (1) into the objective function of firm 1 gives <span class="math inline">\(\pi(q_1) = (a - c_1 - q_1 - q_2 - q_3)q_1 = (a - c_1 - q_1 - \frac{1}{3}(a - 2c_2 + c_3 - q_1) - \frac{1}{3}(a - 2c_3 + c_2 -\)</span> <span class="math inline">\(q_1))q_1 = \frac{1}{3}(a - 3c_1 + c_2 + c_3 - q_1)q_1.\)</span> The FOC for firm 1 is <span class="math inline">\(a - 3c_1 + c_2 + c_3 - 2q_1 = 0\)</span>, which gives</p>
+<p><span class="math display">\[q_1^* = \frac{1}{2}(a - 3c_1 + c_2 + c_3)\tag{2}\]</span></p>
+<p>The expression in (1) and (2) together constitute the SPNE of the game. On the SPNE path: <span class="math inline">\(q_2^* = \frac{1}{6}(a + 3c_1 - 5c_2 + c_3)\)</span>, <span class="math inline">\(q_3^* = \frac{1}{6}(a + 3c_1 + c_2 - 5c_3)\)</span> and so <span class="math inline">\(Q_a^* = q_1^* + q_2^* + q_3^* = \frac{1}{6}(5a - 3c_1 - c_2 - c_3)\)</span>.</p>
+<p>For clarity, we list the firms’ optimal quantities in the table below:</p>
+<table>
+<caption>Table 1<span data-label="my-label"></span></caption>
+<thead>
+<tr class="header">
+<th align="left">Firm</th>
+<th align="left">Optimal quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left"><span class="math inline">\(\frac{1}{2}(a - 3c_1 + c_2 + c_3)\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left"><span class="math inline">\(\frac{1}{6}(a + 3c_1 - 5c_2 + c_3)\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left"><span class="math inline">\(\frac{1}{6}(a + 3c_1 + c_2 - 5c_3)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Of course, we could not have done this without this bright man:</p>
+<div style="text-align:center;" class="figure">
+<img src="images/Heinrich_von_stackelberg.gif" style="text-align:center;" alt="Heinrich von Stackelberg" />
+<p style="text-align:center;" class="caption">Heinrich von Stackelberg</p>
+</div>
+</body>
+</html>
